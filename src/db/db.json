@@ -8,6 +8,15 @@
       "avatar": "http",
       "createdAt": 1571213104370,
       "id": "Z2hlvDmLOSRZGebC_Z_aA"
+    },
+    {
+      "email": "pouya@gmail.com",
+      "password": "passowrd",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1610355325516,
+      "id": "UTAXSV6-5x3NGTh-YKSLO"
     }
   ],
   "posts": [],
