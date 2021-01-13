@@ -26,8 +26,24 @@
       "avatar": "http",
       "createdAt": 1610441163240,
       "id": "TLL8my5XRPEpwQTlzdI5c"
+    },
+    {
+      "email": "melly@yo.com",
+      "password": "asdas",
+      "role": "MEMBER",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1610528896112,
+      "id": "ZU9ahGl3qLL87FqKXQUX9"
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "message": "hello there",
+      "author": "ZU9ahGl3qLL87FqKXQUX9",
+      "createdAt": 1610529252760,
+      "id": "yy7mhD5wtT7oWJHwEEnwW"
+    }
+  ],
   "settings": []
 }

@@ -30,14 +30,9 @@ const createModel = (db, table) => ({
     return db.get(table).remove(filter).write();
   },
   createOne(fields) {
-    console.log(fields);
     const item = { ...fields, createdAt: Date.now(), id: nano() };
-    console.log(db.get(table));
     db.get(table).push(item).write();
 
-    console.log(item);
-
-    console.log(db.get(table).find({ id: item.id }).value());
     return db.get(table).find({ id: item.id }).value();
   },
   createMany(toCreate) {
