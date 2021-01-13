@@ -2,7 +2,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const createModel = require('./models');
 
-const adapter = new FileSync('./db/db.json');
+const adapter = new FileSync('./db.json');
 const db = low(adapter);
 
 db.defaults({ posts: [], users: [], settings: [] });
