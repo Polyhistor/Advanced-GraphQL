@@ -7,6 +7,10 @@ const db = require('./db');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  formatError(e) {
+    console.log(e);
+    return e;
+  },
   context({ req, connection }) {
     const context = { ...db };
     if (connection) {
