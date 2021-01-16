@@ -11,52 +11,50 @@ const pubSub = new PubSub();
  */
 module.exports = {
   Query: {
-    me: authenticated((_, __, { user }) => {
+    me: (_, __, { user }) => {
       return user;
-    }),
+    },
 
-    posts: authenticated((_, __, { user, models }) => {
-      return models.Post.findMany({ author: user.id });
-    }),
+    posts: (_, __, { user, models }) => {
+      // return models.Post.findMany({ author: user.id });
+      return models.Post.findMany();
+    },
 
-    post: authenticated((_, { id }, { user, models }) => {
+    post: (_, { id }, { user, models }) => {
       return models.Post.findOne({ id, author: user.id });
-    }),
+    },
 
-    userSettings: authenticated((_, __, { user, models }) => {
+    userSettings: (_, __, { user, models }) => {
       return models.Settings.findOne({ user: user.id });
-    }),
+    },
     // public resolver
     feed(_, __, { models }) {
       return models.Post.findMany();
     },
   },
   Mutation: {
-    updateSettings: authenticated((_, { input }, { user, models }) => {
+    updateSettings: (_, { input }, { user, models }) => {
       return models.Settings.updateOne({ user: user.id }, input);
-    }),
+    },
 
-    createPost: authenticated((_, { input }, { user, models }) => {
+    createPost: (_, { input }, { user, models }) => {
       const post = models.Post.createOne({ ...input, author: user.id });
       pubSub.publish(NEW_POST, { newPost: post });
       return post;
-    }),
+    },
 
     updateMe: authenticated((_, { input }, { user, models }) => {
       return models.User.updateOne({ id: user.id }, input);
     }),
     // admin role
-    invite: authenticated(
-      authorized('ADMIN', (_, { input }, { user }) => {
-        return {
-          from: user.id,
-          role: input.role,
-          createdAt: Date.now(),
-          email: input.email,
-        };
-      })
-    ),
-
+    invite: authorized('ADMIN', (_, { input }, { user }) => {
+      return {
+        from: user.id,
+        role: input.role,
+        createdAt: Date.now(),
+        email: input.email,
+      };
+    }),
     signup(_, { input }, { models, createToken }) {
       const existing = models.User.findOne({ email: input.email });
 

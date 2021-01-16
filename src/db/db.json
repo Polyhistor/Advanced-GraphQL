@@ -44,6 +44,15 @@
       "avatar": "http",
       "createdAt": 1610748405576,
       "id": "pWb6NxLCRYdNBJePz0Wr-"
+    },
+    {
+      "email": "pouya@yo.com",
+      "password": "asdas",
+      "role": "MEMBER",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1610765947606,
+      "id": "M8QACRzJdGqm2R-cAJMd8"
     }
   ],
   "posts": [
