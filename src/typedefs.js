@@ -1,6 +1,8 @@
 const gql = require('graphql-tag');
 
 module.exports = gql`
+  directive @log(message: String = "my message") on FIELD_DEFINITION
+
   enum Theme {
     DARK
     LIGHT
@@ -13,7 +15,7 @@ module.exports = gql`
   }
 
   type User {
-    id: ID!
+    id: ID @log(message: "id here")
     email: String!
     avatar: String!
     verified: Boolean!
